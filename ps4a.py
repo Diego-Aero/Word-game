@@ -242,8 +242,7 @@ def calculateHandlen(hand):
         count+=hand.get(c, 0)
     return count
     """
-
-    pass
+    return sum(hand.values())
 
 
 
