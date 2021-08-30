@@ -74,7 +74,15 @@ def getWordScore(word, n):
     n: integer (HAND_SIZE; i.e., hand size required for additional points)
     returns: int >= 0
     """
-    pass
+    score=0
+    for i in word:
+        score+=SCRABBLE_LETTER_VALUES[i]
+        #Accede al valor de la letra, que ya está tabulado
+    if len(word)==n:
+        score=score*len(word)+50
+    else:
+        score*=len(word)
+    return score
 
 
 
