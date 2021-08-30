@@ -324,7 +324,20 @@ def playGame(wordList):
  
     2) When done playing the hand, repeat from step 1    
     """
-    pass
+    while True:
+        choice = input('Enter n for a new hand, r to replay, e to end: ')
+        if choice == 'n':
+            hand = dealHand(HAND_SIZE)
+        elif choice == 'e':
+            break
+        elif choice != 'r':
+            print('Invalid command.')
+            continue
+        try:
+            playHand(hand, wordList, HAND_SIZE)
+        except NameError:
+            print('You have not played yet. Please play a new hand first!\n')
+
 #
 # Build data structures used for entire session and play game
 #
