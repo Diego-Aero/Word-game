@@ -178,7 +178,51 @@ def isValidWord(word, hand, wordList):
     hand: dictionary (string -> int)
     wordList: list of lowercase strings
     """
-    pass
+    handNew=hand.copy()
+    
+    if word not in wordList:
+        #Esto incluye el caso de que word esté vacío
+        return False
+    
+    for c in word:
+        if c in handNew.keys():
+            #CComprobar que la letra esté en la mano
+            handNew[c]-=1
+            if handNew[c]<0:
+                #Comprobar que no se usen más letras de las que hay en la mano
+                #Se podría contar también con string.count() y así no necesitaríamos una copia de hand
+                return False
+        else:
+            return False
+    
+    return True
+
+    """
+    if word not in wordList:
+        return False
+
+    hand2 = hand.copy()
+    for x in word:
+        if hand2.get(x,0) > 0:
+            hand2[x] -= 1
+        else:
+            return False
+    return True
+    """
+    
+    #Se puede hacer utilizando la funcion getFrequencyDict dada
+    """
+    if word not in wordList:
+        return False
+    
+    wordDict = getFrequencyDict(word)
+    
+    for k in wordDict:
+        if wordDict[k] > hand.get(k, 0):
+            #Comprobamos que no hayamos utilizado mas cantidad de cada letra de las que hay en hand
+            return False
+    return True
+    """
 
 
 #
