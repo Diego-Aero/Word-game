@@ -155,7 +155,12 @@ def updateHand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
-    pass
+    handNew=hand.copy()
+    #Los diccionarios son objetos mutables, no queremos que cambie hand original salvo que digamos hand = updateHand(hand, word)
+    for i in word:
+        if i in handNew.keys():
+            handNew[i]-=1
+    return handNew
 
 
 
