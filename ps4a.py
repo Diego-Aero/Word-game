@@ -122,7 +122,19 @@ def dealHand(n):
     n: int >= 0
     returns: dictionary (string -> int)
     """
-    pass
+    hand={}
+    numVowels = n // 3 #redondeo por abajo
+    
+    for i in range(numVowels):
+        x = VOWELS[random.randrange(0,len(VOWELS))]
+        #Si es la primera da un valor de 0 + 1 y luego al buscarlo sera 1 + 1
+        hand[x] = hand.get(x, 0) + 1
+        
+    for i in range(numVowels, n):    
+        x = CONSONANTS[random.randrange(0,len(CONSONANTS))]
+        hand[x] = hand.get(x, 0) + 1
+        
+    return hand
 
 #
 # Problem #2: Update a hand by removing letters
